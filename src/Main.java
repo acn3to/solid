@@ -1,3 +1,6 @@
+import LSP.Conta;
+import LSP.ContaCorrente;
+import LSP.ContaPoupanca;
 import OCP.DescontoCrianca;
 import OCP.DescontoEstudante;
 import OCP.Pedido;
@@ -10,12 +13,19 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        Pedido pedido = new Pedido();
+        Conta contaCorrente = new ContaCorrente(1000);
 
-        pedido.addDesconto(new DescontoEstudante());
-        pedido.addDesconto(new DescontoCrianca());
+        contaCorrente.depositar(500);
+        contaCorrente.sacar(300);
 
-        double total = pedido.calcularTotal(100);
-        System.out.println("Total após desconto: " + total);
+        System.out.println("Saldo da Conta Corrente: " + contaCorrente.getSaldo());
+
+        Conta contaPoupanca = new ContaPoupanca(2000);
+
+        contaPoupanca.depositar(1500);
+        contaPoupanca.sacar(750);
+
+        System.out.println("Saldo da Conta Poupança: " + contaPoupanca.getSaldo());
     }
 }
+
