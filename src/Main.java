@@ -1,3 +1,7 @@
+import DIP.CartaoCredito;
+import DIP.FormaPagamento;
+import DIP.PayPal;
+import DIP.SistemaPagamento;
 import ISP.OverPowerImpressoraJiraya;
 import LSP.Conta;
 import LSP.ContaCorrente;
@@ -14,12 +18,15 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        OverPowerImpressoraJiraya printer = new OverPowerImpressoraJiraya();
+        SistemaPagamento sistemaComCartao = new SistemaPagamento(new CartaoCredito());
 
-        printer.imprimirDocumento("documento.txt");
-        printer.escaneiarDocumento("documento.jpg");
-        printer.faxearDocumento("documento.pdf");
+        sistemaComCartao.realizarPagamento(758.0);
+
+        sistemaComCartao.getFormaPagamento(new PayPal());
+
+        sistemaComCartao.realizarPagamento(200.5);
     }
 }
+
 
 
