@@ -1,3 +1,4 @@
+import ISP.OverPowerImpressoraJiraya;
 import LSP.Conta;
 import LSP.ContaCorrente;
 import LSP.ContaPoupanca;
@@ -13,19 +14,12 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        Conta contaCorrente = new ContaCorrente(1000);
+        OverPowerImpressoraJiraya printer = new OverPowerImpressoraJiraya();
 
-        contaCorrente.depositar(500);
-        contaCorrente.sacar(300);
-
-        System.out.println("Saldo da Conta Corrente: " + contaCorrente.getSaldo());
-
-        Conta contaPoupanca = new ContaPoupanca(2000);
-
-        contaPoupanca.depositar(1500);
-        contaPoupanca.sacar(750);
-
-        System.out.println("Saldo da Conta Poupança: " + contaPoupanca.getSaldo());
+        printer.imprimirDocumento("documento.txt");
+        printer.escaneiarDocumento("documento.jpg");
+        printer.faxearDocumento("documento.pdf");
     }
 }
+
 
